@@ -55,5 +55,5 @@ const Lists = ({data,loading,error,history}) => !loading && !error ? (
 
 export default withDataFetching({
     dataSource:
-    'https://my-json-server.typicode.com/PacktPublishing/React-Projects/lists'  
+    'https://my-json-server.typicode.com/tduncan14/reactshoppinglist/items'  
 })(Lists);

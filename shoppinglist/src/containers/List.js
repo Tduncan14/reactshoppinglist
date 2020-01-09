@@ -41,7 +41,7 @@ const List = ({data,loading,error,match,history}) => {
     
     export default withDataFetching({
       dataSource:
-        'https://my-json-server.typicode.com/pranayfpackt/-React-Projects/items',
+        'https://my-json-server.typicode.com/tduncan14/reactshoppinglist/items',
     })(List);
 
 
@@ -54,4 +54,3 @@ const List = ({data,loading,error,match,history}) => {
 
 
 
-}

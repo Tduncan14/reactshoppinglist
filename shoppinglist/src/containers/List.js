@@ -16,41 +16,30 @@ const Alert = styled.span`
   text-align: center;
 `;
 
+const List = ({ data, loading, error, match, history }) => {
+  const items =
+    data && data.filter(item => item.listId === parseInt(match.params.id));
 
-const List = ({data,loading,error,match,history}) => {
+  return !loading && !error ? (
+    <>
+      {history && (
+        <SubHeader
+          goBack={() => history.goBack()}
+          openForm={() => history.push(`${match.url}/new`)}
+        />
+      )}
+      <ListItemWrapper>
+        {items && items.map(item => <ListItem key={item.id} data={item} />)}
+      </ListItemWrapper>
+    </>
+  ) : (
+    <Alert>{loading ? 'Loading...' : error}</Alert>
+  );
+};
 
-    const items
-    = data && data.filter(item => item.listId === parseInt(match.params.id));
-
-    return !loading && !error ? (
-        <>
-          {history && (
-            <SubHeader
-              goBack={() => history.goBack()}
-              openForm={() => history.push(`${match.url}/new`)}
-            />
-          )}
-          <ListItemWrapper>
-            {items && items.map(item => <ListItem key={item.id} data={item} />)}
-          </ListItemWrapper>
-        </>
-      ) : (
-        <Alert>{loading ? 'Loading...' : error}</Alert>
-      );
-    };
-    
-    export default withDataFetching({
-      dataSource:
-        'https://my-json-server.typicode.com/tduncan14/reactshoppinglist/items',
-    })(List);
-
-
-
-
-
-
-
-
-
+export default withDataFetching({
+  dataSource:
+    'https://my-json-server.typicode.com/tduncan14/reactshoppinglist/items',
+})(List);
 
 

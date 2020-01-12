@@ -45,6 +45,8 @@ const WithDataFetching = props => WrappedComponent => {
 
 
     render(){
+
+         console.log(this.state.data,"this is the data")
         const {data,loading,error} = this.state;
 
         return(
